@@ -1,4 +1,11 @@
 class StudentsController < ApplicationController
+  respond_to :json
+
+  def show
+    existing_student = Student.find(params[:id])
+    respond_with(existing_student)
+  end
+
   def update
     student = Student.find(params[:id])
 
