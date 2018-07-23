@@ -54,7 +54,7 @@ gem 'bourbon', '~> 5.0'
 gem 'neat', '~> 2.1'
 gem 'spring-commands-rspec', group: :development
 gem 'rspec-rails', '~> 3.6', group: [:development, :test]
-gem 'shoulda-matchers', group: :test
+gem 'shoulda-matchers', '~> 3.1', group: :test
 gem 'capybara-webkit', group: :test
 gem 'simple_form'
 gem 'bullet', group: [:development, :test]
