@@ -63,3 +63,4 @@ gem 'delayed_job_active_record'
 gem 'rack-timeout', group: :production
 gem 'responders'
 gem 'webpacker', '~> 3.5'
+gem 'slim-rails'
