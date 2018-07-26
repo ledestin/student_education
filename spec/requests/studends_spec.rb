@@ -4,6 +4,18 @@ describe "Student management:" do
   let(:headers) { { "ACCEPT" => "application/json" } }
   let(:json_body) { JSON.parse response.body }
 
+  describe "get list of students" do
+    it "returns all students" do
+      create_list :student, 10, completed_lesson: 1, completed_part: 2
+
+      get "/students", headers: headers
+
+      expect(response).to have_http_status(:ok)
+      expect(json_body.size).to eq 10
+      expect(json_body.first["completed_lesson"]).to eq 1
+    end
+  end
+
   it "updates completed lesson progress" do
     new_student = create :student, completed_lesson: 1, completed_part: 1
 
