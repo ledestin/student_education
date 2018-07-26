@@ -2,7 +2,11 @@ class StudentsController < ApplicationController
   respond_to :json
 
   def index
-    respond_with(Student.all)
+    students = params[:teacher_id] ?
+      Student.where(teacher_id: params[:teacher_id]) :
+      Student.all
+
+    respond_with(students)
   end
 
   def show
