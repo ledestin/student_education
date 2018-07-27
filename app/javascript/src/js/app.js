@@ -2,6 +2,7 @@ import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
+
 import Students from './backbone/collections/students.js'
 
 export class App extends React.Component {
