@@ -12,7 +12,7 @@ export class App extends React.Component {
     this.students.fetch().then(() => console.log(this.students.get(1)))
   }
 
-  render = () => {
+  render() {
     return <div>Hello from App</div>
   }
 }
