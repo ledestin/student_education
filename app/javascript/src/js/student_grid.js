@@ -2,8 +2,8 @@ import React from 'react'
 import ReactDataGrid from 'react-data-grid'
 
 export class StudentGrid extends React.Component {
-  constructor(props, context) {
-    super(props, context)
+  constructor(props) {
+    super(props)
 
     this.columns = [
       {
