@@ -16,7 +16,7 @@ export class App extends React.Component {
 
   componentDidMount() {
     this.state.students.fetch()
-      .then(() => this.setState({ students: this.state.students }))
+      .then(() => this.setState({}))
       .catch(error => console.log(error))
   }
 
