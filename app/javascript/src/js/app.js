@@ -4,17 +4,24 @@ import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
 
 import Students from './backbone/collections/students.js'
+import { StudentGrid } from './student_grid.js'
 
 export class App extends React.Component {
   constructor(props) {
     super(props)
 
-    this.students = new Students()
-    this.students.fetch().then(() => console.log(this.students.get(1)))
+    let students = new Students()
+    this.state = { students }
+  }
+
+  componentDidMount() {
+    this.state.students.fetch()
+      .then(() => this.setState({ students: this.state.students }))
+      .catch(error => console.log(error))
   }
 
   render() {
-    return <div>Hello from App</div>
+    return <StudentGrid collection={this.state.students} />
   }
 }
 
