@@ -14,25 +14,50 @@ export class App extends React.Component {
 
     let students = new Students()
     let teachers = new Teachers()
-    this.state = { students, teachers }
+    this.state = { students, teachers, errors: {} }
   }
 
   componentDidMount() {
     this.state.students.fetch()
-      .then(() => this.setState({}))
-      .catch(error => console.log(error))
+      .then(() => this.clearError('students'))
+      .catch(error => this.setError('students', error.statusText))
     this.state.teachers.fetch()
-      .then(() => this.setState({}))
-      .catch(error => console.log(error))
+      .then(() => this.clearError('teachers'))
+      .catch(error => this.setError('teachers', error.statusText))
   }
 
   render() {
     return (
       <div>
+        {this.errors()}
         <CollectionGrid title="Teachers" collection={this.state.teachers} />
         <StudentGrid collection={this.state.students} />
       </div>
     )
+  }
+
+  errors() {
+    const errorEntries = Object.entries(this.state.errors)
+    const result = errorEntries.map(([key, errorMessage]) => {
+      if (!errorMessage)
+        return
+
+      return <p key={key}
+        className="error">Error loading {key}: {errorMessage}</p>
+    })
+
+    return result
+  }
+
+  setError(key, errorMessage) {
+    this.setState((prevState, props) => {
+      prevState.errors[key] = errorMessage
+      return {}
+    })
+  }
+
+  clearError(key) {
+    this.setError(key, null)
   }
 }
 
