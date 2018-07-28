@@ -5,7 +5,7 @@ import Backbone from 'backbone'
 
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
-import { StudentGrid } from './student_grid.js'
+import StudentGrid from './student_grid.js'
 import CollectionGrid from './collection_grid.js'
 
 export class App extends React.Component {
