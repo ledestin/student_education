@@ -51,8 +51,7 @@ export class App extends React.Component {
 
   setError(key, errorMessage) {
     this.setState((prevState, props) => {
-      prevState.errors[key] = errorMessage
-      return {}
+      return { errors: {...prevState.errors, [key]: errorMessage} }
     })
   }
 
