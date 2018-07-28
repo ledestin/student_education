@@ -19,7 +19,7 @@ export default class CollectionGrid extends React.Component {
   }
 
   rowGetter = (idx) => {
-    let model = this.props.collection.get(idx + 1)
+    let model = this.props.collection.at(idx)
     return model ? model.attributes : null
   }
 
