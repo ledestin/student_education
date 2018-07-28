@@ -1,8 +1,7 @@
 require "rails_helper"
 
 describe "Student management:" do
-  let(:headers) { { "ACCEPT" => "application/json" } }
-  let(:json_body) { JSON.parse response.body }
+  include_context :json
 
   describe "get list of students" do
     it "returns all students" do

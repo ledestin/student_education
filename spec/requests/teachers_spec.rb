@@ -1,8 +1,7 @@
 require "rails_helper"
 
 describe "Teacher management:" do
-  let(:headers) { { "ACCEPT" => "application/json" } }
-  let(:json_body) { JSON.parse response.body }
+  include_context :json
 
   describe "get list of teachers" do
     it "returns all teachers" do
