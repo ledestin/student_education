@@ -11,7 +11,8 @@ export class StudentGrid extends React.Component {
         name: 'ID',
         width: 35
       },
-      { key: 'name',
+      {
+        key: 'name',
         name: 'Name'
       }
     ]
