@@ -2,6 +2,7 @@ import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
+import { HashRouter } from 'react-router-dom'
 
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
@@ -61,5 +62,9 @@ export class App extends React.Component {
 }
 
 $(function() {
-  ReactDOM.render(<App />, document.getElementById('app'))
+  ReactDOM.render(
+    <HashRouter>
+      <App />
+    </HashRouter>,
+    document.getElementById('app'))
 })
