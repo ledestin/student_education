@@ -30,7 +30,6 @@ export default class App extends React.Component {
       <div>
         {this.routes()}
         {this.errors()}
-        <TeacherList title="Teachers" collection={this.state.teachers} />
       </div>
     )
   }
@@ -38,6 +37,10 @@ export default class App extends React.Component {
   routes() {
     return (
       <div>
+        <Route exact path="/" render={(props) => {
+          return <TeacherList title="Teachers"
+            collection={this.state.teachers} {...props} />
+        }} />
         <Route path="/teachers/:teacher_id/student_report"
           render={(props) => {
             return <StudentReportPage
