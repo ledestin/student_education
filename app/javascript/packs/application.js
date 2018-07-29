@@ -11,15 +11,28 @@ import $ from 'jquery'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { HashRouter } from 'react-router-dom'
+import { AppContainer } from 'react-hot-loader'
 
 import App from '../src/js/app.js'
 
 console.log('Hello World from Webpacker')
 
-$(function() {
+const render = Component => {
   ReactDOM.render(
-    <HashRouter>
-      <App />
-    </HashRouter>,
+    <AppContainer>
+      <HashRouter>
+        <Component />
+      </HashRouter>
+    </AppContainer>,
     document.getElementById('app'))
+}
+
+$(function() {
+  render(App)
+
+  if (module.hot) {
+    module.hot.accept("../src/js/app.js", () => {
+      render(App)
+    })
+  }
 })
