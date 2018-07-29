@@ -1,10 +1,11 @@
 import React from 'react'
+import { Route } from 'react-router-dom'
 import Backbone from 'backbone'
 
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
-import StudentGrid from './student_grid.js'
 import TeacherList from './teacher_list.js'
+import StudentsPage from './students_page.js'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -27,9 +28,17 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
+        {this.routes()}
         {this.errors()}
         <TeacherList title="Teachers" collection={this.state.teachers} />
-        <StudentGrid collection={this.state.students} />
+      </div>
+    )
+  }
+
+  routes() {
+    return (
+      <div>
+        <Route path="/student_list/:teacher_id" component={StudentsPage} />
       </div>
     )
   }

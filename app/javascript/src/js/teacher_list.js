@@ -19,7 +19,7 @@ export default class TeacherList extends React.Component {
     const teacherId = teacher.get('id')
 
     return (
-      <Link key={teacherId} to={`/student_list?teacher_id=${teacherId}`}>
+      <Link key={teacherId} to={`/student_list/${teacherId}`}>
         {teacher.get('name')}
       </Link>
     )
