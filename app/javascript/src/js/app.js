@@ -5,7 +5,7 @@ import Backbone from 'backbone'
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
 import TeacherList from './teacher_list.js'
-import StudentsPage from './students_page.js'
+import StudentReportPage from './student_report_page.js'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -38,7 +38,8 @@ export default class App extends React.Component {
   routes() {
     return (
       <div>
-        <Route path="/student_list/:teacher_id" component={StudentsPage} />
+        <Route path="/teachers/:teacher_id/student_report"
+          component={StudentReportPage} />
       </div>
     )
   }

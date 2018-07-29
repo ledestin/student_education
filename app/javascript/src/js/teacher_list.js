@@ -12,14 +12,14 @@ export default class TeacherList extends React.Component {
   }
 
   teachers() {
-    return this.props.collection.map(this.linkToStudentList)
+    return this.props.collection.map(this.linkToStudentReport)
   }
 
-  linkToStudentList(teacher) {
+  linkToStudentReport(teacher) {
     const teacherId = teacher.get('id')
 
     return (
-      <Link key={teacherId} to={`/student_list/${teacherId}`}>
+      <Link key={teacherId} to={`/teachers/${teacherId}/student_report`}>
         {teacher.get('name')}
       </Link>
     )

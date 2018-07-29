@@ -3,7 +3,7 @@ import React from 'react'
 import Students from './backbone/collections/students.js'
 import StudentGrid from './student_grid.js'
 
-export default class StudentsPage extends React.Component {
+export default class StudentReportPage extends React.Component {
   constructor(props) {
     super(props)
 
