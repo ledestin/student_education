@@ -19,10 +19,27 @@ export default class StudentReportPage extends React.Component {
   }
 
   render() {
-    return <StudentGrid collection={this.state.students} />
+    return (
+      <div>
+        <h1>{this.header()}</h1>
+        <StudentGrid collection={this.state.students} />
+      </div>
+    )
+  }
+
+  header() {
+    const teacher = this.teacher()
+    if (!teacher)
+      return 'Loading...'
+
+    return `Teacher ${teacher.get('name')}`
   }
 
   teacherId() {
     return this.props.match.params["teacher_id"]
+  }
+
+  teacher() {
+    return this.props.teachers.get(this.teacherId())
   }
 }

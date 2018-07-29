@@ -39,7 +39,10 @@ export default class App extends React.Component {
     return (
       <div>
         <Route path="/teachers/:teacher_id/student_report"
-          component={StudentReportPage} />
+          render={(props) => {
+            return <StudentReportPage
+              teachers={this.state.teachers} {...props} />}
+          }/>
       </div>
     )
   }
