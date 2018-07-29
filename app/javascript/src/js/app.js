@@ -7,7 +7,7 @@ import { HashRouter } from 'react-router-dom'
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
 import StudentGrid from './student_grid.js'
-import CollectionGrid from './collection_grid.js'
+import TeacherList from './teacher_list.js'
 
 export class App extends React.Component {
   constructor(props) {
@@ -31,7 +31,7 @@ export class App extends React.Component {
     return (
       <div>
         {this.errors()}
-        <CollectionGrid title="Teachers" collection={this.state.teachers} />
+        <TeacherList title="Teachers" collection={this.state.teachers} />
         <StudentGrid collection={this.state.students} />
       </div>
     )
