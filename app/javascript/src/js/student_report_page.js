@@ -8,7 +8,7 @@ export default class StudentReportPage extends React.Component {
     super(props)
 
     const students = new Students()
-    students.teacherId = props.match.params["teacher_id"]
+    students.teacherId = this.teacherId()
     this.state = { students }
   }
 
@@ -20,5 +20,9 @@ export default class StudentReportPage extends React.Component {
 
   render() {
     return <StudentGrid collection={this.state.students} />
+  }
+
+  teacherId() {
+    return this.props.match.params["teacher_id"]
   }
 }
