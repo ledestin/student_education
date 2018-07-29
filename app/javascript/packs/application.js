@@ -7,6 +7,19 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import $ from 'jquery'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { HashRouter } from 'react-router-dom'
+
 import App from '../src/js/app.js'
 
 console.log('Hello World from Webpacker')
+
+$(function() {
+  ReactDOM.render(
+    <HashRouter>
+      <App />
+    </HashRouter>,
+    document.getElementById('app'))
+})

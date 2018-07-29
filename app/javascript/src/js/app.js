@@ -1,15 +1,12 @@
-import $ from 'jquery'
 import React from 'react'
-import ReactDOM from 'react-dom'
 import Backbone from 'backbone'
-import { HashRouter } from 'react-router-dom'
 
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
 import StudentGrid from './student_grid.js'
 import TeacherList from './teacher_list.js'
 
-export class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props)
 
@@ -60,11 +57,3 @@ export class App extends React.Component {
     this.setError(key, null)
   }
 }
-
-$(function() {
-  ReactDOM.render(
-    <HashRouter>
-      <App />
-    </HashRouter>,
-    document.getElementById('app'))
-})
