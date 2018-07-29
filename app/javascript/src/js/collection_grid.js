@@ -5,7 +5,7 @@ export default class CollectionGrid extends React.Component {
   constructor(props) {
     super(props)
 
-    this.columns = [
+    this.defaultColumns = [
       {
         key: 'id',
         name: 'ID',
@@ -21,6 +21,10 @@ export default class CollectionGrid extends React.Component {
   rowGetter = (idx) => {
     let model = this.props.collection.at(idx)
     return model ? model.attributes : null
+  }
+
+  get columns() {
+    return this.props.columns || this.defaultColumns
   }
 
   render() {
