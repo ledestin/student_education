@@ -12,15 +12,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
 
-    let students = new Students()
     let teachers = new Teachers()
-    this.state = { students, teachers, errors: [] }
+    this.state = { teachers, errors: [] }
   }
 
   componentDidMount() {
-    this.state.students.fetch()
-      .then(() => this.setState({}))
-      .catch(error => this.addError('Server error'))
     this.state.teachers.fetch()
       .then(() => this.setState({}))
       .catch(error => this.addError('Server error'))
