@@ -15,6 +15,7 @@ import { HashRouter } from 'react-router-dom'
 import { AppContainer } from 'react-hot-loader'
 
 import App from '../src/js/app.js'
+import initCapybaraSupport from '../src/js/capybara.js'
 
 console.log('Hello World from Webpacker')
 
@@ -29,6 +30,8 @@ const render = Component => {
 }
 
 $(function() {
+  initCapybaraSupport($)
+
   render(App)
 
   if (module.hot) {
