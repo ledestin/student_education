@@ -5,6 +5,7 @@ import Backbone from 'backbone'
 import Students from './backbone/collections/students.js'
 import Teachers from './backbone/collections/teachers.js'
 import TeacherList from './teacher_list.js'
+import ErrorList from './error_list.js'
 import StudentReportPage from './student_report_page.js'
 
 export default class App extends React.Component {
@@ -13,22 +14,22 @@ export default class App extends React.Component {
 
     let students = new Students()
     let teachers = new Teachers()
-    this.state = { students, teachers, errors: {} }
+    this.state = { students, teachers, errors: [] }
   }
 
   componentDidMount() {
     this.state.students.fetch()
-      .then(() => this.clearError('students'))
-      .catch(error => this.setError('students', error.statusText))
+      .then(() => this.setState({}))
+      .catch(error => this.addError('Server error'))
     this.state.teachers.fetch()
-      .then(() => this.clearError('teachers'))
-      .catch(error => this.setError('teachers', error.statusText))
+      .then(() => this.setState({}))
+      .catch(error => this.addError('Server error'))
   }
 
   render() {
     return (
       <div>
-        {this.errors()}
+        <ErrorList errorMessages={this.state.errors} />
         {this.routes()}
       </div>
     )
@@ -50,26 +51,12 @@ export default class App extends React.Component {
     )
   }
 
-  errors() {
-    const errorEntries = Object.entries(this.state.errors)
-    const result = errorEntries.map(([key, errorMessage]) => {
-      if (!errorMessage)
+  addError(errorMessage) {
+    this.setState((prevState, props) => {
+      if (prevState.errors.includes(errorMessage))
         return
 
-      return <p key={key}
-        className="error">Error loading {key}: {errorMessage}</p>
+      return { errors: [...prevState.errors, errorMessage] }
     })
-
-    return result
-  }
-
-  setError(key, errorMessage) {
-    this.setState((prevState, props) => {
-      return { errors: {...prevState.errors, [key]: errorMessage} }
-    })
-  }
-
-  clearError(key) {
-    this.setError(key, null)
   }
 }
