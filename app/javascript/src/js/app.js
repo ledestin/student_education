@@ -12,7 +12,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
 
-    let teachers = new Teachers()
+    const teachers = new Teachers()
     this.state = { teachers, errors: [] }
   }
 
