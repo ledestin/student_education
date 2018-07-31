@@ -14,8 +14,6 @@ export default class StudentReportPage extends React.Component {
 
   componentDidMount() {
     this.state.students.fetch()
-      .then(() => this.setState({}))
-      .catch((error) => console.log(error))
   }
 
   render() {

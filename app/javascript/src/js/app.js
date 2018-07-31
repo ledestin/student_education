@@ -1,3 +1,4 @@
+import $ from 'jquery'
 import React from 'react'
 import { Route } from 'react-router-dom'
 import Backbone from 'backbone'
@@ -17,9 +18,14 @@ export default class App extends React.Component {
   }
 
   componentDidMount() {
+    this.setupAjaxSuccessesToUpdateState()
+    this.setupAjaxFailuresToUpdateErrors()
+
     this.state.teachers.fetch()
-      .then(() => this.setState({}))
-      .catch(error => this.addError('Server error'))
+  }
+
+  componentWillUnmount() {
+    this.unbindAjaxCallbacks()
   }
 
   render() {
@@ -45,6 +51,19 @@ export default class App extends React.Component {
           }/>
       </div>
     )
+  }
+
+  setupAjaxSuccessesToUpdateState() {
+    $(document).ajaxSuccess(() => this.setState({}))
+  }
+
+  setupAjaxFailuresToUpdateErrors() {
+    $(document).ajaxError(() => this.addError('Server error'))
+  }
+
+  unbindAjaxCallbacks() {
+    $(document).unbind('ajaxSuccess')
+    $(document).unbind('ajaxError')
   }
 
   addError(errorMessage) {
