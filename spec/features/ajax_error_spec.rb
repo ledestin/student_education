@@ -20,6 +20,21 @@ feature "Show an error on AJAX failure", js: true do
     expect(page).to have_text(error_text)
   end
 
+  scenario "Error shows for home page, then clears on student report page" do
+    teacher = create :teacher, name: "Batman"
+
+    setup_api_to_fail
+    visit "/"
+    wait_for_ajax
+
+    expect(page).to have_text(error_text)
+
+    visit "/#/teachers/#{teacher.id}/student_report"
+    wait_for_ajax
+
+    expect(page).not_to have_text(error_text)
+  end
+
   private
 
   def setup_api_to_fail

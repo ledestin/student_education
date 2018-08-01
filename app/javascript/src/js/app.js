@@ -1,5 +1,6 @@
 import $ from 'jquery'
 import React from 'react'
+import { withRouter } from 'react-router'
 import { Route } from 'react-router-dom'
 import Backbone from 'backbone'
 
@@ -9,7 +10,7 @@ import TeacherList from './teacher_list.js'
 import ErrorList from './error_list.js'
 import StudentReportPage from './student_report_page.js'
 
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props)
 
@@ -26,6 +27,12 @@ export default class App extends React.Component {
 
   componentWillUnmount() {
     this.unbindAjaxCallbacks()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.isLocationChanged(nextProps)) {
+      this.clearErrors()
+    }
   }
 
   render() {
@@ -53,6 +60,10 @@ export default class App extends React.Component {
     )
   }
 
+  isLocationChanged(nextProps) {
+    return nextProps.location !== this.props.location
+  }
+
   setupAjaxSuccessesToUpdateState() {
     $(document).ajaxSuccess(() => this.setState({}))
   }
@@ -74,4 +85,10 @@ export default class App extends React.Component {
       return { errors: [...prevState.errors, errorMessage] }
     })
   }
+
+  clearErrors() {
+    this.setState({ errors: [] })
+  }
 }
+
+export default withRouter(App)
