@@ -13,7 +13,7 @@ feature "Show an error on AJAX failure", js: true do
   end
 
   scenario "AJAX fails, there's error message" do
-    setup_api_to_fail
+    setup_teachers_api_to_fail
     visit "/"
     wait_for_ajax
 
@@ -23,7 +23,7 @@ feature "Show an error on AJAX failure", js: true do
   scenario "Error shows for home page, then clears on student report page" do
     teacher = create :teacher, name: "Batman"
 
-    setup_api_to_fail
+    setup_teachers_api_to_fail
     visit "/"
     wait_for_ajax
 
@@ -37,7 +37,7 @@ feature "Show an error on AJAX failure", js: true do
 
   private
 
-  def setup_api_to_fail
+  def setup_teachers_api_to_fail
     TeachersController.always_fail = true
   end
 end
