@@ -197,6 +197,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rspec-collection_matchers (1.1.3)
+      rspec-expectations (>= 2.99.0.beta1)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -326,6 +328,7 @@ DEPENDENCIES
   rails (~> 5.2.0)
   recipient_interceptor
   responders
+  rspec-collection_matchers
   rspec-rails (~> 3.6)
   sass-rails (~> 5.0)
   shoulda-matchers (~> 3.1)

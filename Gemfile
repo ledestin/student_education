@@ -45,6 +45,7 @@ group :test do
   gem "simplecov", require: false
   gem "timecop"
   gem "webmock"
+  gem 'rspec-collection_matchers'
 end
 
 gem "suspenders", group: [:development, :test]
