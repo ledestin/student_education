@@ -9,4 +9,21 @@ class Student < ApplicationRecord
 
     record.errors.add attr, "and completed_part must be both set or both nil"
   end
+
+  def complete_next_part
+    if completed_lesson.nil?
+      self.completed_lesson, self.completed_part = 1, 1
+      return
+    end
+
+    return if completed_lesson == 100 && completed_part == 3
+
+    if completed_part == 3
+      self.completed_lesson += 1
+      self.completed_part = 1
+      return
+    end
+
+    self.completed_part += 1
+  end
 end
