@@ -26,11 +26,3 @@ You can run tests with this:
 Or if you're on a Linux server:
 
     % xvfb-run rake spec
-
-## Deploying
-
-If you have previously run the `./bin/setup` script,
-you can deploy to staging and production with:
-
-    % ./bin/deploy staging
-    % ./bin/deploy production
