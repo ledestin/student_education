@@ -26,16 +26,4 @@ class Student < ApplicationRecord
 
     new_progress == current_progress.next
   end
-
-  def no_parts_complete?
-    completed_lesson.nil?
-  end
-
-  def completed_last_lesson?
-    completed_lesson == 100 && completed_part == 3
-  end
-
-  def completed_last_part_of_lesson?
-    completed_part == 3
-  end
 end
