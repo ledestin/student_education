@@ -16,6 +16,19 @@ class LessonProgress
     @lesson == other.lesson && @part == other.part
   end
 
+  def next
+    return self.class.new(FIRST_LESSON, FIRST_PART) if no_parts_complete?
+    return self if last_lesson_and_part?
+
+    if last_part_of_lesson?
+      self.class.new(@lesson.next, FIRST_PART)
+    else
+      self.class.new(@lesson, @part.next)
+    end
+  end
+
+  private
+
   def no_parts_complete?
     @lesson.nil?
   end
@@ -32,14 +45,4 @@ class LessonProgress
     @lesson == LAST_LESSON and @part == LAST_PART
   end
 
-  def next
-    return self.class.new(FIRST_LESSON, FIRST_PART) if no_parts_complete?
-    return self if last_lesson_and_part?
-
-    if last_part_of_lesson?
-      self.class.new(@lesson.next, FIRST_PART)
-    else
-      self.class.new(@lesson, @part.next)
-    end
-  end
 end
