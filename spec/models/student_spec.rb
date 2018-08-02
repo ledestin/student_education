@@ -1,11 +1,14 @@
 require 'rails_helper'
 
 RSpec.describe Student, type: :model do
+  subject { Student.new name: "Batman" }
+
   it { is_expected.to belong_to(:teacher) }
   it { is_expected.to validate_inclusion_of(:completed_lesson).in_range(1..100)
                         .with_message("must be in 1..100 range") }
   it { is_expected.to validate_inclusion_of(:completed_part).in_range(1..3)
                         .with_message("must be in 1..3 range") }
+  it { is_expected.to validate_uniqueness_of(:name) }
 
   it "fails validation if completed_lesson is set and completed_part isn't" do
     subject.completed_lesson = 1

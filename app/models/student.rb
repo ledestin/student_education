@@ -4,6 +4,7 @@ class Student < ApplicationRecord
   LESSON_RANGE = LessonProgress::FIRST_LESSON..LessonProgress::LAST_LESSON
   PART_RANGE = LessonProgress::FIRST_PART..LessonProgress::LAST_PART
 
+  validates_uniqueness_of :name
   validates_inclusion_of :completed_lesson,
     in: LESSON_RANGE, allow_nil: true,
     message: "must be in #{LESSON_RANGE} range"
