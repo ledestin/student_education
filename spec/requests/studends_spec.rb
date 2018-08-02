@@ -26,7 +26,7 @@ describe "Student management:" do
     end
   end
 
-  describe "delete idea" do
+  describe "delete student" do
     let!(:student) { create :student }
 
     it "deletes student" do
