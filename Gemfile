@@ -46,6 +46,7 @@ group :test do
   gem "timecop"
   gem "webmock"
   gem 'rspec-collection_matchers'
+  gem "faker"
 end
 
 gem "suspenders", group: [:development, :test]
