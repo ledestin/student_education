@@ -21,16 +21,28 @@ class Student < ApplicationRecord
   private
 
   def can_complete?(lesson, part)
-    if completed_lesson.nil?
+    if no_parts_complete?
       return lesson == 1 && part == 1
     end
 
-    return false if completed_lesson == 100 && completed_part == 3
+    return false if completed_last_lesson?
 
-    if completed_part == 3
+    if completed_last_part_of_lesson?
       return lesson == completed_lesson + 1 && part == 1
     end
 
     return part == completed_part + 1
+  end
+
+  def no_parts_complete?
+    completed_lesson.nil?
+  end
+
+  def completed_last_lesson?
+    completed_lesson == 100 && completed_part == 3
+  end
+
+  def completed_last_part_of_lesson?
+    completed_part == 3
   end
 end
