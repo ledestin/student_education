@@ -19,6 +19,15 @@ After setting up, you can run the application using [Heroku Local]:
 
 [Heroku Local]: https://devcenter.heroku.com/articles/heroku-local
 
+You can run tests with this:
+
+    % rake spec
+
+Or on a Linux server:
+
+    % xvfb-run rake spec
+
+
 ## Guidelines
 
 Use the following guides for getting things done, programming well, and
