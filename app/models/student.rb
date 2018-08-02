@@ -11,7 +11,7 @@ class Student < ApplicationRecord
   end
 
   def complete(lesson, part)
-    return false unless can_complete?(lesson, part)
+    return false unless can_complete_to?(lesson, part)
 
     self.completed_lesson = lesson
     self.completed_part = part
@@ -20,7 +20,7 @@ class Student < ApplicationRecord
 
   private
 
-  def can_complete?(lesson, part)
+  def can_complete_to?(lesson, part)
     if no_parts_complete?
       return lesson == 1 && part == 1
     end
