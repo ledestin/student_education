@@ -45,8 +45,4 @@ class StudentsController < ApplicationController
     params.require(:student).permit(:name, :teacher_id, :completed_lesson,
                                     :completed_part)
   end
-
-  def render_failed_validation(student)
-    render json: { errors: student.errors.full_messages }, status: :bad_request
-  end
 end
