@@ -23,6 +23,14 @@ RSpec.describe Student, type: :model do
   end
 
   describe "#complete" do
+    it "returns true on successful completion" do
+      expect(subject.complete(1, 1)).to eq true
+    end
+
+    it "returns true it can't complete" do
+      expect(subject.complete(1, 2)).to eq false
+    end
+
     context "no parts were completed" do
       it "can complete to lesson 1 part 1" do
         expect {
