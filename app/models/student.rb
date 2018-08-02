@@ -1,11 +1,14 @@
 class Student < ApplicationRecord
   belongs_to :teacher, required: false
 
+  LESSON_RANGE = LessonProgress::FIRST_LESSON..LessonProgress::LAST_LESSON
+  PART_RANGE = LessonProgress::FIRST_PART..LessonProgress::LAST_PART
+
   validates_inclusion_of :completed_lesson,
-    in: LessonProgress::FIRST_LESSON..LessonProgress::LAST_LESSON,
-    allow_nil: true
+    in: LESSON_RANGE, allow_nil: true,
+    message: "must be in #{LESSON_RANGE} range"
   validates_inclusion_of :completed_part,
-    in: LessonProgress::FIRST_PART..LessonProgress::LAST_PART, allow_nil: true
+    in: PART_RANGE, allow_nil: true, message: "must be in #{PART_RANGE} range"
   validates_each :completed_lesson do |record, attr, value|
     next if record.completed_lesson && record.completed_part
     next if record.completed_lesson.nil? && record.completed_part.nil?
