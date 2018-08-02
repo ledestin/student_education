@@ -81,7 +81,7 @@ describe "Student management:" do
     end
 
     it "returns :bad_request on invalid student id" do
-      delete "/students/foo"
+      get "/students/foo"
 
       expect(response).to have_http_status(:bad_request)
     end
