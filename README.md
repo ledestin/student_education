@@ -23,7 +23,7 @@ You can run tests with this:
 
     % rake spec
 
-Or on a Linux server:
+Or if you're on a Linux server:
 
     % xvfb-run rake spec
 
