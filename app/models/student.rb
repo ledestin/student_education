@@ -21,17 +21,10 @@ class Student < ApplicationRecord
   private
 
   def can_complete_to?(lesson, part)
-    if no_parts_complete?
-      return lesson == 1 && part == 1
-    end
+    current_progress = LessonProgress.new(completed_lesson, completed_part)
+    new_progress = LessonProgress.new(lesson, part)
 
-    return false if completed_last_lesson?
-
-    if completed_last_part_of_lesson?
-      return lesson == completed_lesson + 1 && part == 1
-    end
-
-    return part == completed_part + 1
+    new_progress == current_progress.next
   end
 
   def no_parts_complete?
