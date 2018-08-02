@@ -1,8 +1,11 @@
 class Student < ApplicationRecord
   belongs_to :teacher, required: false
 
-  validates_inclusion_of :completed_lesson, in: 1..100, allow_nil: true
-  validates_inclusion_of :completed_part, in: 1..3, allow_nil: true
+  validates_inclusion_of :completed_lesson,
+    in: LessonProgress::FIRST_LESSON..LessonProgress::LAST_LESSON,
+    allow_nil: true
+  validates_inclusion_of :completed_part,
+    in: LessonProgress::FIRST_PART..LessonProgress::LAST_PART, allow_nil: true
   validates_each :completed_lesson do |record, attr, value|
     next if record.completed_lesson && record.completed_part
     next if record.completed_lesson.nil? && record.completed_part.nil?
