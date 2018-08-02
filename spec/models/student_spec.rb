@@ -22,11 +22,11 @@ RSpec.describe Student, type: :model do
     expect(subject.completed_part).to be_nil
   end
 
-  describe "#complete_next_part" do
+  describe "#complete" do
     context "new student" do
       it "completes the first ever part as lesson 1 part 1" do
         expect {
-          subject.complete_next_part
+          subject.complete(1, 1)
         }.to change { subject.completed_lesson }.from(nil).to(1)
          .and change { subject.completed_part }.from(nil).to(1)
       end
@@ -35,7 +35,7 @@ RSpec.describe Student, type: :model do
         subject.completed_lesson, subject.completed_part = 1, 1
 
         expect {
-          subject.complete_next_part
+          subject.complete(1, 2)
         }.to change { subject.completed_lesson }.by(0)
          .and change { subject.completed_part }.from(1).to(2)
       end
@@ -44,7 +44,7 @@ RSpec.describe Student, type: :model do
         subject.completed_lesson, subject.completed_part = 1, 3
 
         expect {
-          subject.complete_next_part
+          subject.complete(2, 1)
         }.to change { subject.completed_lesson }.from(1).to(2)
          .and change { subject.completed_part }.from(3).to(1)
       end
@@ -53,7 +53,7 @@ RSpec.describe Student, type: :model do
         subject.completed_lesson, subject.completed_part = 100, 3
 
         expect {
-          subject.complete_next_part
+          subject.complete(101, 3)
         }.to change { subject.completed_lesson }.by(0)
          .and change { subject.completed_part }.by(0)
       end
