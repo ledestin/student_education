@@ -91,8 +91,8 @@ to come up with.
 
 [App]:
 https://github.com/ledestin/student_education/blob/master/app/javascript/src/js/app.js#L13
-[Student#complete]: https://github.com/ledestin/student_education/blob/readme/app/models/student.rb#L20
+[Student#complete]: https://github.com/ledestin/student_education/blob/master/app/models/student.rb#L20
 [Student#complete_next_part]:
 https://github.com/ledestin/student_education/blob/3e07e5092b4d881b75eba79187649f769cb46580/app/models/student.rb#L13
 [LessonProgress]:
-https://github.com/ledestin/student_education/blob/readme/app/models/lesson_progress.rb
+https://github.com/ledestin/student_education/blob/master/app/models/lesson_progress.rb
