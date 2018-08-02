@@ -72,7 +72,7 @@ be changed.
 
 [App] class could use some refactoring; fetching teachers doesn't really belong
 there. I also shouldn't have tried caching teachers for the report page and just
-loaded the corresponding teacher again.
+loaded the corresponding teacher again. I should have used PropTypes.
 
 I didn't introduce `Person` class as I felt it was too early in the spike. Name
 uniqueness isn't enforced by unique indexes; no time cause I spent a lot of time
