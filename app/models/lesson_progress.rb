@@ -1,6 +1,4 @@
 class LessonProgress
-  class NoMoreLessonsAvailable < StandardError; end
-
   FIRST_LESSON = 1
   LAST_LESSON = 100
   FIRST_PART = 1
