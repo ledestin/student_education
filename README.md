@@ -33,6 +33,19 @@ After you run `% heroku local`, the application will be available at
 [localhost:3000]. You can CRUD [students] and [teachers] with your API client of
 choice; the API is restful.
 
+Teacher attributes of note:
+```
+name
+```
+
+Student attributes of note:
+```
+name
+completed_lesson
+completed_part
+teacher_id
+```
+
 At the moment, UI includes a list of teachers on home page. If you click on a
 teacher, you'll get to the list of students of that teacher. Student info
 includes lesson progress. If there's a problem loading teachers or students, an
